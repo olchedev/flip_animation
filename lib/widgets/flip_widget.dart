@@ -7,12 +7,14 @@ class FlipWidget extends StatefulWidget {
     required this.size,
     required this.front,
     required this.back,
+    this.duration = const Duration(milliseconds: 400),
     super.key,
   });
 
   final Size size;
   final Widget front;
   final Widget back;
+  final Duration duration;
 
   @override
   State<FlipWidget> createState() => _FlipWidgetState();
@@ -31,7 +33,7 @@ class _FlipWidgetState extends State<FlipWidget> with SingleTickerProviderStateM
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 400),
+      duration: widget.duration,
     );
 
     _animation = Tween(
